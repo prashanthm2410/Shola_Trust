@@ -1,0 +1,252 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    overflow: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #acd6a2, #7ecaa4, #388a7a);
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100vw;
+}
+
+header {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+    padding: 1rem 10vw;
+    margin-bottom: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 1rem 0;
+}
+
+nav ul li {
+    display: inline;
+    /* margin-right: 10px; */
+    margin-left: 3rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    border:#acd6a2 solid 4px;
+    padding: 0.75rem;
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+}
+
+nav ul li a:hover {
+    color: #acd6a2;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: 0.75s;
+}
+
+main {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    text-align: justify;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+    bottom: 0;
+}
+
+/* Image Container */
+#img {
+    position: relative; /* Ensure the parent is positioned */
+    width: 100vw; /* Full viewport width */
+    height: 200vh; /* Adjust height as needed */
+}
+/* Background Image Styling */
+#img::before {
+    content: ""; /* Empty content for the pseudo-element */
+    position: absolute; /* Position it absolutely within the parent */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 234vh; /* Full height of the parent */
+    background-image: url('../images/matriarch-3.webp');
+    background-size:  cover; /* Cover ensures the image spans the full width and height */
+    background-repeat: repeat-y; /* Repeats the image vertically */
+    background-position: center; /* Centers the image within the element */
+    opacity: 0.2; /* Sets the opacity for the background image */
+    z-index: -1; /* Sends the pseudo-element behind the content of the parent */
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+form {
+    width: 80vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-group {
+    width: 45%;
+    margin-bottom: 20px; /* Add spacing between form groups */
+}
+
+#noimage .form-group {
+    width: 75%;
+    margin-bottom: 20px; /* Add spacing between form groups */
+}
+
+/* Label and Input Field Styling */
+label {
+    display: block; /* Ensures labels are on their own line */
+    padding-bottom: 0.5rem; /* Adds space below the label */
+    font-size: 1.2rem;
+}
+
+input[type="number"],
+input[type="text"] {
+    display: block; /* Ensures inputs are on their own line */
+    width: 100%; /* Spans full width of the form-group */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+#noimage {
+    width: 50%;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.images {
+    display: block; /* Ensures file input is on its own line */
+    width: 100%; /* Spans full width of the form-group */
+    height: 400px; /* Adjust height as needed */
+    border: 2px dashed #ffffff; /* Dashed border for file input */
+    border-radius: 8px;
+    background-color: transparent; /* Transparent background for file input */
+    cursor: pointer;
+    box-sizing: border-box; /* Ensures border is included in the width */
+    text-align: center;
+    display: block;
+}
+
+.images:hover {
+    display: block; /* Ensures file input is on its own line */
+    width: 100%; /* Spans full width of the form-group */
+    height: 400px; /* Adjust height as needed */
+    border: 2px dashed #acd6a2; /* Dashed border for file input */
+    border-radius: 8px;
+    background-color: transparent; /* Transparent background for file input */
+    cursor: pointer;
+    box-sizing: border-box; /* Ensures border is included in the width */
+    text-align: center;
+    display: block;
+}
+
+
+button {
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block; /* Ensures button is on its own line */
+    width: 25%; /* Spans full width of the form-group */
+    font-size: 1.25rem;
+    border:#000000 solid 4px;
+    padding: 0.35rem 1rem;
+}
+
+button:hover {
+    background-color: #acd6a2;
+}
+
+
+img {
+    margin-top: 20%;
+    width: 100%;
+    height: 10rem;
+}
+
+#logo {
+    margin-top: 0;
+    height: 13vh;
+    width: 11vw;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    text-align: center;
+    border: #acd6a2 solid 4px;
+    width: 30%;
+    height: 20vw;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#approach h3 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+.form-group p {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    /* margin-top: 1rem;
+    margin-bottom: 0.5rem; */
+    /* padding-left: 5%; */
+    /* padding-right: 5%; */
+}
+
+p {
+    font-size: 1.20rem;
+}
+
+.card p {
+    font-size: 1.20rem;
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 5%;
+}

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lantana Removal Cost Analysis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            flex: 1;
+            padding: 0 5vw;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-title {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .result-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .result-title {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        header {
+            color: white;
+            background-color: #acd6a2;
+            display: flex;
+            justify-content: space-between;
+            height: 16vh;
+            padding: 1rem 10vw;
+            margin-bottom: 2rem;
+        }
+
+        button {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            /* Ensures button is on its own line */
+            width: 20%;
+            /* Spans full width of the form-group */
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            border: #acd6a2 solid 4px;
+            padding: 0.35rem 1rem;
+        }
+
+        button:hover {
+            background-color: #acd6a2;
+            border: #acd6a2 solid 4px;
+        }
+
+        
+
+        header h1 {
+            margin-top: 1%;
+            margin-right: 0%;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #logo {
+            margin-top: 0;
+            height: 13vh;
+            width: 11vw;
+        }
+
+        #buttons {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        header a {
+            background-color: #acd6a2;
+        }
+        a {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            justify-content: center;
+            /* Ensures button is on its own line */
+            width: 20%;
+            /* Spans full width of the form-group */
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            border: #acd6a2 solid 4px;
+            padding: 0.35rem 1rem;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+        }
+        
+        button a {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            /* Ensures button is on its own line */
+            /* Spans full width of the form-group */
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            border: #acd6a2 solid 0px;
+            padding: 0.35rem 1rem;
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover {
+            background-color: #acd6a2;
+            /* border: #acd6a2 solid 4px; */
+            text-decoration: none;
+            color: black;
+        } 
+
+        button a:hover {
+            background-color: #acd6a2;
+            /* border: #acd6a2 solid 4px; */
+            text-decoration: none;
+            color: black;
+        } 
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="{% url 'index' %}"><img src="../../static/images/logo_dark.png" id="logo" alt=""></a>
+        <h1>Lantana Removal and Restoration Cost Analysis</h1>
+    </header>
+    <div class="container">
+        <h2 class="mb-4">Cost Analysis</h2>
+        <form id="costForm" onsubmit="calculateCosts(event)">
+            <!-- Labour Costs -->
+            <div class="form-section">
+                <h4 class="form-title">Labour Costs</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="wage">Wages for Workers (Hourly Wage):</label>
+                        <input type="number" class="form-control" id="wage" step="0.01" value="{{ averages.wage }}"
+                            required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="hours">Total Hours Worked:</label>
+                        <input type="number" class="form-control" id="hours" step="0.01" value="{{ averages.hours }}"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="trainingCost">Training Costs:</label>
+                    <input type="number" class="form-control" id="trainingCost" step="0.01"
+                        value="{{ averages.trainingCost }}" required>
+                </div>
+            </div>
+
+            <!-- Storage Costs -->
+            <div class="form-section">
+                <h4 class="form-title">Storage Costs</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="storageCost">Cost per Unit:</label>
+                        <input type="number" class="form-control" id="storageCost" step="0.01"
+                            value="{{ averages.storageCost }}" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="units">Total Units:</label>
+                        <input type="number" class="form-control" id="units" step="0.01" value="{{ averages.units }}"
+                            required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Machinery Operation Costs -->
+            <div class="form-section">
+                <h4 class="form-title">Machinery Operation Costs</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="usageCost">Usage Costs:</label>
+                        <input type="number" class="form-control" id="usageCost" step="0.01"
+                            value="{{ averages.usageCost }}" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="maintenanceCost">Regular Maintenance:</label>
+                        <input type="number" class="form-control" id="maintenanceCost" step="0.01"
+                            value="{{ averages.maintenanceCost }}" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supervision Charges -->
+            <div class="form-section">
+                <h4 class="form-title">Supervision Charges</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="supervisors">Number of Supervisors:</label>
+                        <input type="number" class="form-control" id="supervisors" step="1"
+                            value="{{ averages.supervisors }}" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="supervisorWages">Supervisor Wages:</label>
+                        <input type="number" class="form-control" id="supervisorWages" step="0.01"
+                            value="{{ averages.supervisorWages }}" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Land Mopping Costs -->
+            <div class="form-section">
+                <h4 class="form-title">Land Mopping Costs</h4>
+                <div class="form-group">
+                    <label for="landCost">Cost per Hectare:</label>
+                    <input type="number" class="form-control" id="landCost" step="0.01" value="{{ averages.landCost }}"
+                        required>
+                </div>
+            </div>
+
+            <!-- Biomass Processing Costs -->
+            <div class="form-section">
+                <h4 class="form-title">Biomass Processing Costs</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="processingCost">Processing Costs:</label>
+                        <input type="number" class="form-control" id="processingCost" step="0.01"
+                            value="{{ averages.processingCost }}" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="transportCost">Transport Costs:</label>
+                        <input type="number" class="form-control" id="transportCost" step="0.01"
+                            value="{{ averages.transportCost }}" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monitoring Costs -->
+            <div class="form-section">
+                <h4 class="form-title">Monitoring Costs</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="routineChecks">Routine Check Costs:</label>
+                        <input type="number" class="form-control" id="routineChecks" step="0.01"
+                            value="{{ averages.routineChecks }}" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="assessments">Assessment Costs:</label>
+                        <input type="number" class="form-control" id="assessments" step="0.01"
+                            value="{{ averages.assessments }}" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restoration Costs -->
+            <div class="form-section">
+                <h4 class="form-title">Restoration Costs</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="plantingCost">Planting Costs:</label>
+                        <input type="number" class="form-control" id="plantingCost" step="0.01"
+                            value="{{ averages.plantingCost }}" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="soilAmendments">Soil Treatment Costs:</label>
+                        <input type="number" class="form-control" id="soilAmendments" step="0.01"
+                            value="{{ averages.soilAmendments }}" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overhead and Management Costs -->
+            <div class="form-section">
+                <h4 class="form-title">Overhead and Management Costs</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="adminCost">Administrative Costs:</label>
+                        <input type="number" class="form-control" id="adminCost" step="0.01"
+                            value="{{ averages.adminCost }}" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="managementCost">Management Costs:</label>
+                        <input type="number" class="form-control" id="managementCost" step="0.01"
+                            value="{{ averages.managementCost }}" required>
+                    </div>
+                </div>
+            </div>
+            <div id="buttons">
+                <button type="submit" id="submit">Calculate Costs</button>
+            </div>
+        </form>
+        <a href="http://localhost:8501" target="_blank" class="button"><p>Dashboard</p></a>
+        <a href="{% url 'revenue_ca' %}" class="button"><p>Calculate Revenue</p></a>
+        <!-- Results Section -->
+        <div class="result-section" id="resultsSection">
+            <h2 class="text-center mb-4">Cost Analysis Results</h2>
+            <div class="form-group">
+                <h4 class="result-title">Total Cost per Hectare:</h4>
+                <p id="totalCostPerHectare"></p>
+            </div>
+            <div class="form-group">
+                <h4 class="result-title">Cost per Kilogram of Lantana Biomass:</h4>
+                <p id="costPerKg"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="measureData" 
+        data-area="{{ measure.area }}"
+        data-biomass-kg="{{ measure.biomass }}">
+    </div>
+
+
+    <!-- <footer class="mt-auto">
+        <p>&copy; 2024 Lantana Removal Project. All Rights Reserved.</p>
+    </footer> -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function calculateCosts(event) {
+            event.preventDefault();
+
+            console.log("calculateCosts function called");
+
+            // Labour Costs
+            const wage = parseFloat(document.getElementById('wage').value) || 0;
+            const hours = parseFloat(document.getElementById('hours').value) || 0;
+            const trainingCost = parseFloat(document.getElementById('trainingCost').value) || 0;
+            const labourCost = (wage * hours) + trainingCost;
+            console.log("Labour Cost:", labourCost);
+
+            // Storage Costs
+            const storageCost = parseFloat(document.getElementById('storageCost').value) || 0;
+            const units = parseFloat(document.getElementById('units').value) || 0;
+            const storageTotal = storageCost * units;
+            console.log("Storage Total:", storageTotal);
+
+            // Machinery Operation Costs
+            const usageCost = parseFloat(document.getElementById('usageCost').value) || 0;
+            const maintenanceCost = parseFloat(document.getElementById('maintenanceCost').value) || 0;
+            const machineryTotal = usageCost + maintenanceCost;
+            console.log("Machinery Total:", machineryTotal);
+
+            // Supervision Charges
+            const supervisors = parseFloat(document.getElementById('supervisors').value) || 0;
+            const supervisorWages = parseFloat(document.getElementById('supervisorWages').value) || 0;
+            const supervisionTotal = supervisors * supervisorWages;
+            console.log("Supervision Total:", supervisionTotal);
+
+            // Land Mopping Costs
+            const landCost = parseFloat(document.getElementById('landCost').value) || 0;
+            console.log("Land Cost:", landCost);
+
+            // Biomass Processing Costs
+            const processingCost = parseFloat(document.getElementById('processingCost').value) || 0;
+            const transportCost = parseFloat(document.getElementById('transportCost').value) || 0;
+            const biomassProcessingTotal = processingCost + transportCost;
+            console.log("Biomass Processing Total:", biomassProcessingTotal);
+
+            // Monitoring Costs
+            const routineChecks = parseFloat(document.getElementById('routineChecks').value) || 0;
+            const assessments = parseFloat(document.getElementById('assessments').value) || 0;
+            const monitoringTotal = routineChecks + assessments;
+            console.log("Monitoring Total:", monitoringTotal);
+
+            // Restoration Costs
+            const plantingCost = parseFloat(document.getElementById('plantingCost').value) || 0;
+            const soilAmendments = parseFloat(document.getElementById('soilAmendments').value) || 0;
+            const restorationTotal = plantingCost + soilAmendments;
+            console.log("Restoration Total:", restorationTotal);
+
+            // Overhead and Management Costs
+            const adminCost = parseFloat(document.getElementById('adminCost').value) || 0;
+            const managementCost = parseFloat(document.getElementById('managementCost').value) || 0;
+            const overheadManagementTotal = adminCost + managementCost;
+            console.log("Overhead and Management Total:", overheadManagementTotal);
+
+            const measureElement = document.getElementById('measureData');
+            const area = measureElement.dataset.area;
+            const biomassKg = measureElement.dataset.biomassKg;
+
+            console.log(area,biomassKg);
+
+            // Cost per Hectare
+            const totalCostPerHectare = labourCost + storageTotal + machineryTotal + supervisionTotal + landCost + biomassProcessingTotal + monitoringTotal + restorationTotal + overheadManagementTotal;
+            console.log("Total Cost per Hectare:", (totalCostPerHectare*10000)/area );
+            
+            // Display Results
+            document.getElementById('totalCostPerHectare').innerText = `Rs ${((totalCostPerHectare*10000000)/area).toFixed(2)}`;
+
+            // Show results section
+            document.getElementById('resultsSection').style.display = 'block';
+
+            document.getElementById('costPerKg').innerText = `Rs ${((totalCostPerHectare*10000000)/biomassKg).toFixed(2)}`;
+        }
+    </script>
+</body>
+
+</html>

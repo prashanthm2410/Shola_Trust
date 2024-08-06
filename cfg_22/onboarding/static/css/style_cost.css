@@ -1,0 +1,136 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.1rem;
+}
+
+
+header {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+    padding: 1rem 10vw;
+    margin-bottom: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 1rem 0;
+}
+
+nav ul li {
+    display: inline;
+    /* margin-right: 10px; */
+    margin-left: 3rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    border:#acd6a2 solid 4px;
+    padding: 0.75rem;
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+}
+
+nav ul li a:hover {
+    color: #acd6a2;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: 0.75s;
+} 
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #acd6a2, #7ecaa4, #388a7a);
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100vw;
+}
+
+.container {
+    /* background-color: #fff; */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    min-height: 500px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+h1 {
+    color: #ffffff; /* Lantana-inspired green */
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+
+button {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    /* Ensures button is on its own line */
+    width: 20%;
+    /* Spans full width of the form-group */
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    border: #acd6a2 solid 4px;
+    padding: 0.35rem 1rem;
+}
+
+button:hover {
+    background-color: #acd6a2;
+    border: #acd6a2 solid 4px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4a4a4a; /* Dark gray for text */
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* button {
+    background-color: #f2a9c0; 
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #f27a7a; 
+} */
+
+.result-section {
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: left;
+    font-size: 16px;
+    color: #333;
+}

@@ -1,0 +1,7 @@
+venv
+dataset
+Team-22*
+Accessing_server.pdf
+cfg_22/onboarding/.env
+cfg_22/cost_analysis/.env
+*.pyc

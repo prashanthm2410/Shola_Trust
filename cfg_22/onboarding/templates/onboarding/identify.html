@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identify Area</title>
+    <link rel="stylesheet" href="../../static/css/style_identify.css">
+    <script src="../../static/js/script.js"></script>
+</head>
+
+
+<body>
+    <div id="img">
+        <!-- <img src="../../static/images/Elephant.png" alt=""> -->
+        <header>
+            <a href="{% url 'index' %}"><img src="../../static/images/logo_dark.png" id="logo" alt=""></a>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'identify' %}">Make a Difference</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <form method="post" id="areaForm" enctype="multipart/form-data">
+                <!-- Text Fields -->
+                <div id="noimage">
+                    <div class="form-group">
+                        <label for="place">Place</label>
+                        <input type="text" id="place" name="place" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="range">Range</label>
+                        <input type="text" id="range" name="range" required>
+                    </div>
+        
+                    <!-- Integer Fields -->
+                    <div class="form-group">
+                        <label for="longitude">Longitude</label>
+                        <input type="number" step=".000001" id="longitude" name="longitude" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="latitude">Latitude</label>
+                        <input type="number" step=".000001" id="latitude" name="latitude" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Height</label>
+                        <input type="number" id="height" name="height" required>
+                    </div>
+                    <button type="submit">Submit</button>
+                </div>
+                <!-- Image Upload Fields -->
+                <div class="form-group">
+                    <p>Top View:</p>
+                    <label for="top_view" class="images">
+                        <img src="../../static/images/cloud-arrow-up-solid.svg" alt="">
+                        <span id="msg1">No file chosen</span>
+                    </label>
+                    <input type="file" id="top_view" name="top_view" accept="image/*" required>
+                </div>                
+            </form>
+        </main>
+        <!-- <footer>
+            <p>&copy; 2024 The Shola Trust. All rights reserved.</p>
+        </footer> -->
+    </div>
+    
+</body>
+
+</html>
